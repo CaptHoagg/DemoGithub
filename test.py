@@ -13,6 +13,8 @@ def display_mainmenu():
     print("---------")
     print("---------")
     print("---------")
+    print("nhynhi ")
+    print("a b")
     # this fuction is created to display the menu of our console app
     pass
 
