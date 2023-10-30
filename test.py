@@ -1,3 +1,4 @@
+import webbrowser
 
 def main_menu():
     print("1. Add song to playlist")
@@ -39,8 +40,26 @@ def show_playlist():
 
 
 def play_song():
-    song_id = input("Hãy chọn nhạc bạn muốn phát:")
-    # Play the selected song (you can implement this functionality using a music player library)
+    entered_song = input("Hãy chọn nhạc bạn muốn phát:").strip().lower()
+    
+    try:
+        with open("data.txt", "r") as data_file:
+            song_data = data_file.read()
+
+        song_list = song_data.split("\n\n")
+
+        found = False  # Flag to track whether the song is found in the playlist.
+
+        for entry in song_list:
+            if entered_song in entry.lower():
+                webbrowser.open(entry)
+                break
+
+        if not found:
+            print("Không có trong playlist.")
+    
+    except FileNotFoundError:
+        print("Không có trong playlist.")
 
 def user_option():
     while True:
